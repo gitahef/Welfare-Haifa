@@ -46,21 +46,36 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.05);
         }
 
+        /* --- LOGO SECTION FIX --- */
         .top-logos {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
+            padding: 20px 30px;
             background: white;
             border-bottom: 1px solid #eee;
+            gap: 20px;
+        }
+
+        .logo-right, .logo-left {
+            display: flex;
+            align-items: center;
+            height: 70px; /* Uniform height for alignment */
         }
 
         .logo-right img, .logo-left img {
-            height: 55px;
+            max-height: 100%;
+            width: auto;
             object-fit: contain;
         }
 
-        /* --- NEW TOP HEADER STYLE --- */
+        /* Responsive logos */
+        @media (max-width: 600px) {
+            .top-logos { padding: 15px; }
+            .logo-right, .logo-left { height: 50px; }
+        }
+
+        /* --- TOP HEADER --- */
         .main-page-header {
             text-align: center;
             padding: 30px 20px 10px 20px;
@@ -79,7 +94,7 @@
             font-weight: 600;
         }
 
-        /* --- MEGA LINKS STYLE --- */
+        /* --- MEGA LINKS --- */
         .mega-link {
             text-decoration: none;
             display: flex;
@@ -354,14 +369,14 @@
 
 <div class="container">
     
-    <!-- Top Logos Section - Reordered as requested: Welfare Right, City Left -->
+    <!-- Top Logos Section - Fixed Alignment -->
     <div class="top-logos">
         <div class="logo-right">
-            <!-- משרד הרווחה / המינהל -->
+            <!-- Welfare Logo (Right) -->
             <img src="http://googleusercontent.com/image_collection/image_retrieval/2611962236105777552" alt="המינהל לשירותים חברתיים - משרד הרווחה">
         </div>
         <div class="logo-left">
-            <!-- עיריית חיפה -->
+            <!-- Municipal Logo (Left) -->
             <img src="http://googleusercontent.com/image_collection/image_retrieval/17084736686556678924" alt="עיריית חיפה">
         </div>
     </div>

@@ -60,18 +60,23 @@
             object-fit: contain;
         }
 
-        .hero {
-            background-image: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('https://images.unsplash.com/photo-1549410190-88053a47311b?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            color: white;
+        /* --- NEW TOP HEADER STYLE --- */
+        .main-page-header {
             text-align: center;
-            padding: 35px 20px;
+            padding: 30px 20px 10px 20px;
+            color: var(--primary-blue);
         }
 
-        .hero h1 {
-            font-size: 28px;
-            font-weight: 700;
+        .main-page-header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .update-date-label {
+            font-size: 16px;
+            color: var(--text-muted);
+            font-weight: 600;
         }
 
         /* --- MEGA LINKS STYLE --- */
@@ -100,6 +105,15 @@
         .mega-green { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
 
         /* --- LAYOUT --- */
+        .hero-banner {
+            background-image: linear-gradient(rgba(0, 51, 102, 0.4), rgba(0, 51, 102, 0.4)), url('https://images.unsplash.com/photo-1549410190-88053a47311b?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 120px;
+            margin: 10px 20px;
+            border-radius: 12px;
+        }
+
         .municipal-top-bar {
             background: #eef2f7;
             padding: 20px;
@@ -186,6 +200,7 @@
             color: white;
             font-weight: 700;
             font-size: 14px;
+            text-align: center;
         }
 
         .bg-telegram { background-color: var(--telegram-blue); }
@@ -264,14 +279,15 @@
             background: #e0f2fe;
         }
 
-        .highlight-desc {
+        .highlight-desc.eran-box {
             background: #f0f7ff;
             border-right: 4px solid var(--primary-blue);
-            padding: 12px;
-            font-size: 13.5px;
-            margin: 8px 0;
+            padding: 15px;
+            font-size: 15px;
+            margin: 10px 0;
             border-radius: 0 4px 4px 0;
             color: #1e3a8a;
+            font-weight: 600;
         }
 
         .directory-section {
@@ -348,7 +364,13 @@
         </div>
     </div>
 
-    <!-- Mega Links for High Priority Access -->
+    <!-- New Top Header with Title and Update Date -->
+    <header class="main-page-header">
+        <h1>המינהל לשירותים חברתיים חיפה - זמן חירום</h1>
+        <span class="update-date-label">תאריך עדכון: 2/3/26</span>
+    </header>
+
+    <!-- Mega Links for High Priority Access (Now below the header) -->
     <a href="https://www.haifa-during-emergency.co.il/" target="_blank" class="mega-link mega-blue">
         <i class="fa-solid fa-globe"></i>
         מעבר לאתר חירום עירוני - עיריית חיפה
@@ -359,10 +381,8 @@
         איתור מרחבים מוגנים בחיפה
     </a>
 
-    <!-- Main Hero Banner -->
-    <header class="hero">
-        <h1>המינהל לשירותים חברתיים חיפה - זמן חירום</h1>
-    </header>
+    <!-- Hero Banner (Graphic spacer) -->
+    <div class="hero-banner"></div>
 
     <!-- Top Contact Points -->
     <section class="municipal-top-bar">
@@ -444,7 +464,7 @@
             </div>
         </section>
 
-        <!-- Category 2: Resilience & Mental Health (UPDATED TITLE) -->
+        <!-- Category 2: Resilience & Mental Health -->
         <section class="card">
             <div class="card-header">
                 <i class="fa-solid fa-heart-pulse"></i>
@@ -511,6 +531,15 @@
                 <span class="item-title">מרכז הזדמנות לתעסוקה חיפה</span>
                 <span class="item-desc">המרכז העירוני לקידום תעסוקה. מעניק ייעוץ אישי, ליווי, סדנאות ותוכניות תעסוקה מגוונות.</span>
                 <a href="https://haifaforms.haifa.muni.il/?page_id=149662" target="_blank" class="btn-link">פנייה ליועץ תעסוקה</a>
+            </div>
+
+            <div class="item-box">
+                <span class="item-title">מוקד זכויות עובדים - משרד העבודה</span>
+                <span class="item-desc">מענה אנושי, מידע חשוב והכוונה לשכירים, עצמאיים ומעסיקים במצבי חירום.</span>
+                <div class="phone-row" style="margin-bottom:10px;">
+                    <a href="tel:*3080" class="phone-tag"><i class="fa-solid fa-phone"></i> *3080</a>
+                </div>
+                <span class="item-desc" style="font-size: 13px; font-weight: 700; color: var(--primary-blue);">המוקד זמין בימים א'-ה', בין השעות 08:30-16:00</span>
             </div>
 
             <div class="item-box">

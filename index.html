@@ -9,704 +9,463 @@
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        :root {
-            --primary-blue: #003366;
-            --secondary-blue: #1e4a7c;
-            --light-bg: #f8fafc;
-            --card-border: #e2e8f0;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --emergency-red: #dc2626;
-            --whatsapp-green: #25D366;
-            --telegram-blue: #0088cc;
-            --soft-green: #f0fdf4;
-            --soft-blue: #eff6ff;
-        }
+/* 1. הגדרות כלליות */
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+* {
+  box-sizing: border-box;
+}
 
-        body {
-            background-color: #f1f5f9;
-            font-family: 'Assistant', sans-serif;
-            color: var(--text-main);
-            line-height: 1.6;
-        }
+body {
+  background-color: #cbd5e1;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1fr;
+  margin: 0;
+  min-height: 100vh;
+  padding: 40px 0;
+  place-items: center;
+}
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background-color: white;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 0 20px rgba(0,0,0,0.05);
-        }
+.slide-container {
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Assistant', sans-serif;
+  height: 720px;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 1280px;
+}
 
-        /* --- LOGO SECTION FIX --- */
-        .top-logos {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 30px;
-            background: white;
-            border-bottom: 1px solid #eee;
-            gap: 20px;
-        }
+/* 2. טיפוגרפיה */
 
-        .logo-right, .logo-left {
-            display: flex;
-            align-items: center;
-            height: 70px; /* Uniform height for alignment */
-        }
+.slide-container h1,
+.slide-container h2,
+.slide-container h3 {
+  color: #003366;
+  font-weight: 700;
+  margin: 0;
+}
 
-        .logo-right img, .logo-left img {
-            max-height: 100%;
-            width: auto;
-            object-fit: contain;
-        }
+.slide-container p,
+.slide-container li,
+.slide-container .subtitle {
+  color: #475569;
+  font-size: 18px;
+  line-height: 1.5;
+}
 
-        /* Responsive logos */
-        @media (max-width: 600px) {
-            .top-logos { padding: 15px; }
-            .logo-right, .logo-left { height: 50px; }
-        }
+.slide-container .slide-title {
+  font-size: 36px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding: 0 60px;
+  text-align: right;
+  width: 100%;
+}
 
-        /* --- TOP HEADER --- */
-        .main-page-header {
-            text-align: center;
-            padding: 30px 20px 10px 20px;
-            color: var(--primary-blue);
-        }
+.content-area {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 0 60px 40px 60px;
+  width: 100%;
+}
 
-        .main-page-header h1 {
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 5px;
-        }
+/* 3. עיצוב עמוד הבית (דשבורד) */
 
-        .update-date-label {
-            font-size: 16px;
-            color: var(--text-muted);
-            font-weight: 600;
-        }
+.main-header {
+  background-image: linear-gradient(rgba(0, 51, 102, 0.75), rgba(0, 51, 102, 0.75)), url('https://images.unsplash.com/photo-1549410190-88053a47311b?q=80&w=2070&auto=format&fit=crop');
+  background-position: center;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  justify-content: center;
+  padding: 0 60px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
 
-        /* --- MEGA LINKS --- */
-        .mega-link {
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 18px;
-            border-radius: 12px;
-            font-weight: 800;
-            font-size: 19px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin: 10px 20px;
-            border: 2px solid transparent;
-        }
+.logo-strip {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  left: 60px;
+  position: absolute;
+  right: 60px;
+  top: 25px;
+}
 
-        .mega-link:hover {
-            transform: scale(1.01);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
+.logo-strip img {
+  background: white;
+  border-radius: 4px;
+  height: 60px;
+  padding: 5px;
+}
 
-        .mega-red { background: #fef2f2; color: #991b1b; border-color: #fee2e2; }
-        .mega-blue { background: #eff6ff; color: #1e40af; border-color: #dbeafe; }
-        .mega-green { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+.main-header h1 {
+  color: white;
+  font-size: 48px;
+  margin-bottom: 5px;
+  margin-top: 40px;
+}
 
-        /* --- LAYOUT --- */
-        .hero-banner {
-            background-image: linear-gradient(rgba(0, 51, 102, 0.4), rgba(0, 51, 102, 0.4)), url('https://images.unsplash.com/photo-1549410190-88053a47311b?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            height: 120px;
-            margin: 10px 20px;
-            border-radius: 12px;
-        }
+.main-header p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 22px;
+}
 
-        .municipal-top-bar {
-            background: #eef2f7;
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            border-bottom: 2px solid var(--primary-blue);
-        }
+.update-bar {
+  background-color: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
+  color: #64748b;
+  font-size: 16px;
+  padding: 10px 60px;
+  text-align: center;
+  font-weight: 600;
+  width: 100%;
+}
 
-        .muni-item {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            border-right: 4px solid var(--primary-blue);
-            display: flex;
-            flex-direction: column;
-        }
+/* 4. פריסת כפתורים וכרטיסים */
 
-        .muni-item b { color: var(--primary-blue); font-size: 17px; }
-        .muni-item .note { 
-            font-size: 16px; 
-            color: var(--primary-blue); 
-            font-weight: 700; 
-            margin-top: 10px;
-            background: var(--soft-blue);
-            padding: 6px 10px;
-            border-radius: 4px;
-            display: inline-block;
-        }
+.dashboard-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
 
-        .updates-section {
-            background: #fffafa;
-            border-bottom: 1px solid #fee2e2;
-            padding: 25px;
-        }
+.nav-card {
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
 
-        .main-alert-text {
-            color: var(--emergency-red);
-            font-weight: 800;
-            font-size: 20px;
-            text-align: center;
-            display: block;
-            margin-bottom: 15px;
-        }
+.nav-card h3 {
+  align-items: center;
+  display: flex;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
 
-        .wa-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            margin-bottom: 20px;
-        }
+.nav-card h3 i {
+  color: #003366;
+  margin-left: 12px;
+}
 
-        @media (max-width: 600px) {
-            .wa-grid { grid-template-columns: repeat(2, 1fr); }
-            .municipal-top-bar { grid-template-columns: 1fr; }
-        }
+.btn-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 
-        .wa-pill {
-            text-align: center;
-            padding: 10px;
-            background: white;
-            border: 1px solid var(--whatsapp-green);
-            color: var(--whatsapp-green);
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 14px;
-        }
+.btn {
+  background: #003366;
+  border-radius: 6px;
+  color: white;
+  display: block;
+  font-weight: 600;
+  padding: 12px 15px;
+  text-align: center;
+  text-decoration: none;
+  width: calc(50% - 5px);
+  transition: opacity 0.2s;
+}
 
-        .footer-links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-            margin-top: 15px;
-        }
+.btn:hover {
+    opacity: 0.9;
+}
 
-        .footer-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px;
-            border-radius: 8px;
-            text-decoration: none;
-            color: white;
-            font-weight: 700;
-            font-size: 14px;
-            text-align: center;
-        }
+.btn-gray {
+  background: #e2e8f0;
+  color: #003366;
+}
 
-        .bg-telegram { background-color: var(--telegram-blue); }
-        .bg-haifa { background-color: var(--primary-blue); }
-        .bg-whatsapp { background-color: var(--whatsapp-green); }
-        .bg-gray { background-color: #4b5563; }
+.btn-red {
+    background: #dc2626;
+}
 
-        .content-grid {
-            padding: 25px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
+/* 5. פריסת תוכן פנימית (אריחים) */
 
-        @media (max-width: 800px) {
-            .content-grid { grid-template-columns: 1fr; }
-        }
+.tiled-content {
+  display: flex;
+  gap: 25px;
+  width: 100%;
+}
 
-        .card {
-            background: white;
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
+.tile {
+  background-color: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 25px;
+  text-align: right;
+}
 
-        .card-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            color: var(--primary-blue);
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 10px;
-        }
+.tile .icon {
+  color: #003366;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
 
-        .card-header i { font-size: 20px; margin-left: 10px; }
-        .card-header h3 { font-size: 19px; font-weight: 700; }
+.tile h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
 
-        .item-box { margin-bottom: 18px; padding-bottom: 15px; border-bottom: 1px solid #f1f5f9; }
-        .item-box:last-child { border-bottom: none; }
-        
-        .item-title { font-weight: 700; display: block; margin-bottom: 4px; color: var(--primary-blue); font-size: 16px; }
-        .item-desc { font-size: 14px; color: var(--text-main); display: block; margin-bottom: 8px; }
-        
-        .btn-link {
-            display: block;
-            background: var(--primary-blue);
-            color: white;
-            text-align: center;
-            padding: 11px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            margin-top: 5px;
-        }
+.table-layout table {
+  border-collapse: collapse;
+  width: 100%;
+}
 
-        .phone-tag {
-            background: #f1f5f9;
-            color: var(--primary-blue);
-            padding: 8px 14px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 16px;
-            border: 1px solid #e2e8f0;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: background 0.2s;
-        }
+.table-layout th, .table-layout td {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 15px 20px;
+  text-align: right;
+}
 
-        .phone-tag:hover {
-            background: #e0f2fe;
-        }
+.table-layout th {
+  background-color: #f8fafc;
+  color: #003366;
+  font-weight: 700;
+}
 
-        .highlight-desc.eran-box {
-            background: #f0f7ff;
-            border-right: 4px solid var(--primary-blue);
-            padding: 15px;
-            font-size: 15px;
-            margin: 10px 0;
-            border-radius: 0 4px 4px 0;
-            color: #1e3a8a;
-            font-weight: 600;
-        }
+/* Section Title Layout */
+.section-title-layout {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
 
-        .directory-section {
-            padding: 30px 20px;
-            background: #f8fafc;
-        }
+.section-title-layout h2 {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
 
-        .dir-category {
-            margin-bottom: 30px;
-        }
-
-        .dir-category h4 {
-            color: var(--primary-blue);
-            border-bottom: 2px solid #cbd5e1;
-            margin-bottom: 15px;
-            padding-bottom: 5px;
-            font-size: 19px;
-            font-weight: 700;
-        }
-
-        .dir-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 15px;
-        }
-
-        .dir-item {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .dir-item b { display: block; margin-bottom: 5px; font-size: 15px; }
-        .dir-item .phone-link-text { color: var(--primary-blue); font-weight: 700; margin-top: 5px; display: block; text-decoration: none; font-size: 16px; }
-
-        .pharmacy-mega-link {
-            font-size: 20px;
-            font-weight: 800;
-            background: #f0fdf4;
-            color: #166534;
-            border: 2px solid #bbf7d0;
-            padding: 15px;
-            border-radius: 10px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 10px;
-            transition: transform 0.2s;
-        }
-
-        .footer-emergency { background: #1e293b; color: white; padding: 25px; margin-top: auto; }
-        .emergency-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; text-align: center; }
-        .num-box { border: 1px solid #334155; padding: 12px; border-radius: 8px; text-decoration: none; color: white; display: block; }
-        .num-box b { font-size: 24px; display: block; }
-        .num-box label { font-size: 12px; color: #94a3b8; cursor: pointer; }
-        .full-width { grid-column: 1 / -1; }
+.section-title-layout hr {
+  background-color: #003366;
+  border: none;
+  height: 6px;
+  margin-bottom: 30px;
+  width: 120px;
+}
 
     </style>
 </head>
 <body>
 
-<div class="container">
-    
-    <!-- Top Logos Section - Fixed Alignment -->
-    <div class="top-logos">
-        <div class="logo-right">
-            <!-- Welfare Logo (Right) -->
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/2611962236105777552" alt="המינהל לשירותים חברתיים - משרד הרווחה">
-        </div>
-        <div class="logo-left">
-            <!-- Municipal Logo (Left) -->
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/17084736686556678924" alt="עיריית חיפה">
+<!-- Slide 1: עמוד הבית / דשבורד -->
+<div class="slide-container" id="slide1">
+    <div class="logo-strip">
+        <!-- Welfare Logo Right -->
+        <img src="LOGO-WELFARE.png" alt="משרד הרווחה" onerror="this.src='http://googleusercontent.com/image_collection/image_retrieval/2611962236105777552'">
+        <!-- City Logo Left -->
+        <img src="LOGO-CITY.png" alt="עיריית חיפה" onerror="this.src='http://googleusercontent.com/image_collection/image_retrieval/17084736686556678924'">
+    </div>
+    <div class="main-header">
+        <h1>המינהל לשירותים חברתיים חיפה</h1>
+        <p>ריכוז שירותים חיוניים ומידע לתושבים בזמן חירום</p>
+    </div>
+    <div class="update-bar">
+        תאריך עדכון: 2/3/26 | מלחמת "שאגת הארי"
+    </div>
+    <div class="content-area" style="padding-top: 30px;">
+        <div class="dashboard-grid">
+            <!-- בטיחות -->
+            <div class="nav-card">
+                <h3><i class="fa-solid fa-shield-halved"></i> בטיחות והנחיות</h3>
+                <div class="btn-container">
+                    <a href="https://www.haifa.muni.il/operation/security-and-emergency/safe-place/" target="_blank" class="btn">מרחבים מוגנים</a>
+                    <a href="https://www.haifa-during-emergency.co.il/" target="_blank" class="btn">אתר חירום עירוני</a>
+                    <a href="https://t.me/haifamuni" target="_blank" class="btn btn-gray">טלגרם עיריית חיפה</a>
+                </div>
+            </div>
+            <!-- חוסן נפשי -->
+            <div class="nav-card">
+                <h3><i class="fa-solid fa-hand-holding-heart"></i> תמיכה נפשית וחוסן</h3>
+                <div class="btn-container">
+                    <a href="https://haifa-hosen.base44.app/" target="_blank" class="btn">מרכז חוסן דיגיטלי</a>
+                    <a href="tel:1201" class="btn">ער"ן: 1201</a>
+                    <a href="tel:048375649" class="btn btn-gray">מרכז "עמך" חיפה</a>
+                </div>
+            </div>
+            <!-- קהילה ורווחה -->
+            <div class="nav-card">
+                <h3><i class="fa-solid fa-users"></i> מענה וסיוע קהילתי</h3>
+                <div class="btn-container">
+                    <a href="tel:106" class="btn">מוקד עירוני: 106</a>
+                    <a href="tel:048356571" class="btn">מינהל שירותים חברתיים</a>
+                    <a href="tel:0548665309" class="btn btn-gray">מרכז הגישור</a>
+                </div>
+            </div>
+            <!-- זכויות ותעסוקה -->
+            <div class="nav-card">
+                <h3><i class="fa-solid fa-scale-balanced"></i> זכויות ותעסוקה</h3>
+                <div class="btn-container">
+                    <a href="https://www.kolzchut.org.il/he/%D7%A9%D7%90%D7%9C%D7%95%D7%AA_%D7%95%D7%AA%D7%A9%D7%95%D7%91%D7%95%D7%AA_%D7%9C%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D_%D7%95%D7%9C%D7%9E%D7%A2%D7%A1%D7%99%D7%A7%D7%99%D7%9D_%D7%91%D7%AA%D7%A7%D7%95%D7%A4%D7%AA_%D7%94%D7%9E%D7%9C%D7%97%D7%9E%D7%94_%D7%9E%D7%95%D7%9C_%D7%90%D7%99%D7%A8%D7%90%D7%9F" target="_blank" class="btn btn-red" style="width: 100%;">שאלות ותשובות לעובדים (כל זכות)</a>
+                    <a href="tel:*3080" class="btn">מוקד משרד העבודה</a>
+                    <a href="http://www.btl.gov.il/About/contact_us/Pages/default.aspx" target="_blank" class="btn btn-gray">ביטוח לאומי</a>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 
-    <!-- Top Header with Title and Update Date -->
-    <header class="main-page-header">
-        <h1>המינהל לשירותים חברתיים חיפה - זמן חירום</h1>
-        <span class="update-date-label">תאריך עדכון: 2/3/26</span>
-    </header>
+<!-- Slide 2: כותרת מדור - בטיחות -->
+<div class="slide-container" id="slide2">
+    <div class="section-title-layout">
+        <hr>
+        <h2>בטיחות והנחיות</h2>
+        <p>מידע מציל חיים והנחיות התגוננות רשמיות לתושבי העיר חיפה</p>
+    </div>
+</div>
 
-    <!-- Mega Links for High Priority Access -->
-    <a href="https://www.haifa-during-emergency.co.il/" target="_blank" class="mega-link mega-blue">
-        <i class="fa-solid fa-globe"></i>
-        מעבר לאתר חירום עירוני - עיריית חיפה
-    </a>
-
-    <a href="https://www.haifa.muni.il/operation/security-and-emergency/safe-place/?fbclid=IwdGRzaAQSWxBjbGNrBBJbDGV4dG4DYWVtAjExAHNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHrqe0ueYq96Plk2GytIXiS4u1RWMYQNfc9bGYs7R9X97JAXHIlLWuWRTgqx1_aem_9EJP7kpxX5gO-LQyPtN3FA&sfnsn=wa" target="_blank" class="mega-link mega-blue" style="background: #f0f7ff; color: #1d4ed8; border-color: #bfdbfe;">
-        <i class="fa-solid fa-shield-halved"></i>
-        איתור מרחבים מוגנים בחיפה
-    </a>
-
-    <!-- Hero Banner Spacer -->
-    <div class="hero-banner"></div>
-
-    <!-- Top Contact Points -->
-    <section class="municipal-top-bar">
-        <div class="muni-item">
-            <b>מוקד עירוני חיפה (106)</b>
-            <span>דיווח על מפגעים וסיוע ראשוני.</span>
-            <span class="note">פניות למוקד מגיעות לטיפול המינהל לשירותים חברתיים</span>
-            <div style="margin-top:10px;"><a href="tel:106" class="phone-tag"><i class="fa-solid fa-phone"></i> 106</a></div>
-        </div>
-        <div class="muni-item">
-            <b>המינהל לשירותים חברתיים</b>
-            <span>סיוע לאוכלוסיות רווחה, קשישים ומשפחות בסיכון.</span>
-            <div style="margin-top:10px;"><a href="tel:048356571" class="phone-tag"><i class="fa-solid fa-phone"></i> 04-8356571</a></div>
-        </div>
-    </section>
-
-    <!-- Official Communication Channels -->
-    <section class="updates-section">
-        <span class="main-alert-text">ערוצים רשמיים לתקשורת</span>
-        
-        <div class="wa-grid">
-            <a href="https://did.li/Haifagr7" target="_blank" class="wa-pill">קבוצה 7</a>
-            <a href="https://did.li/Haifagr8" target="_blank" class="wa-pill">קבוצה 8</a>
-            <a href="https://did.li/Haifagr9" target="_blank" class="wa-pill">קבוצה 9</a>
-            <a href="https://did.li/Haifagr10" target="_blank" class="wa-pill">קבוצה 10</a>
-        </div>
-
-        <div class="footer-links-grid">
-            <a href="https://t.me/haifamuni" target="_blank" class="footer-link bg-telegram">
-                <i class="fa-brands fa-telegram"></i> טלגרם עיריית חיפה
-            </a>
-            <a href="https://t.me/haifarumuni" target="_blank" class="footer-link bg-gray">
-                <i class="fa-brands fa-telegram"></i> טלגרם ברוסית
-            </a>
-            <a href="https://bit.ly/4awJyiZ" target="_blank" class="footer-link bg-whatsapp">
-                <i class="fa-brands fa-whatsapp"></i> וואטצאפ ברוסית
-            </a>
-            <a href="https://www.haifa.muni.il/article/iran2/" target="_blank" class="footer-link bg-haifa" style="grid-column: 1 / -1;">
-                עמוד עדכונים שוטפים (אתר העירייה)
-            </a>
-        </div>
-    </section>
-
-    <!-- Detailed Content Grid -->
-    <main class="content-grid">
-        
-        <!-- Category 1: Elderly -->
-        <section class="card">
-            <div class="card-header">
-                <i class="fa-solid fa-person-cane"></i>
-                <h3>אזרחים ותיקים</h3>
+<!-- Slide 3: פירוט בטיחות -->
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">מוקדי בטיחות ועדכונים</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                <h3>מרחבים מוגנים</h3>
+                <p>מפה אינטראקטיבית הכוללת את כל המקלטים הציבוריים והמרחבים המוגנים בחיפה.</p>
+                <a href="https://www.haifa.muni.il/operation/security-and-emergency/safe-place/" target="_blank" class="btn" style="width: 100%; margin-top: auto;">לאיתור מרחב מוגן</a>
             </div>
-            
-            <div class="item-box">
-                <span class="item-title">מוקד סיוע קהילתי לאזרחים ותיקים</span>
-                <span class="item-desc">מענה ייעודי בשפות עברית וברוסית.</span>
-                <div class="phone-row">
-                    <a href="tel:*3284" class="phone-tag"><i class="fa-solid fa-phone"></i> *3284</a>
-                    <a href="tel:0772231220" class="phone-tag"><i class="fa-solid fa-phone"></i> 077-2231220</a>
-                </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-tower-broadcast"></i></div>
+                <h3>פיקוד העורף</h3>
+                <p>הנחיות התגוננות מעודכנות בזמן אמת לפי אזור "חיפה" (זמן התרעה דקה אחת).</p>
+                <a href="https://www.oref.org.il/" target="_blank" class="btn" style="width: 100%; margin-top: auto;">אתר פיקוד העורף</a>
             </div>
-
-            <div class="item-box">
-                <span class="item-title">יד עזר לחבר (חיפה)</span>
-                <span class="item-desc">סיוע לניצולי שואה וקשישים, ארוחות חמות וסיוע בבית.</span>
-                <div class="phone-row"><a href="tel:048666924" class="phone-tag">04-8666924</a></div>
-            </div>
-
-            <div class="item-box">
-                <span class="item-title">יוניפר (Uniper) - מועדון בריאות חברתי</span>
-                <span class="item-desc">הצטרפות לקהילה דיגיטלית מלאה בתוכן ופעילות ללא עלות.</span>
-                <a href="https://uniper.co.il/contactform_freereg/" target="_blank" class="btn-link">להצטרפות חינם מהבית</a>
-            </div>
-
-            <div class="item-box">
-                <span class="item-title">עמותת "חיבורים 20-80"</span>
-                <span class="item-desc">סיוע ארצי בשינוע מזון, תרופות והפגת בדידות.</span>
-                <a href="https://linktr.ee/20_80_2026" target="_blank" class="btn-link">לינק להצטרפות וסיוע</a>
-            </div>
-        </section>
-
-        <!-- Category 2: Resilience & Mental Health -->
-        <section class="card">
-            <div class="card-header">
-                <i class="fa-solid fa-heart-pulse"></i>
-                <h3>חוסן ותמיכה נפשית</h3>
-            </div>
-            
-            <div class="item-box">
-                <span class="item-title">מרכז החוסן - אוניברסיטת חיפה</span>
-                <span class="item-desc">מענה מקצועי לטיפול בחרדה ותמיכה רגשית (9:00-19:00).</span>
-                <div class="phone-row"><a href="tel:0528510004" class="phone-tag"><i class="fa-solid fa-phone"></i> 052-8510004</a></div>
-            </div>
-
-            <div class="item-box">
-                <span class="item-title">מרכז החוסן הדיגיטלי להורים וילדים</span>
-                <span class="item-desc">כלים דיגיטליים ומענים עירוניים לחיזוק החוסן המשפחתי.</span>
-                <a href="https://haifa-hosen.base44.app/" target="_blank" class="mega-link mega-blue" style="font-size: 16px; padding: 12px; margin: 10px 0;">
-                    <i class="fa-solid fa-heart-circle-check"></i>
-                    מרכז החוסן הדיגיטלי להורים וילדים
-                </a>
-            </div>
-
-            <div class="item-box">
-                <span class="item-title">מרכז "עמך" חיפה</span>
-                <span class="item-desc">תמיכה נפשית וטיפולים למשרתים ובני משפחה (מתמחים בטראומה ואובדן).</span>
-                <span class="item-desc" style="font-size: 13px; color: var(--text-muted);">כתובת: שד' בן גוריון 6 (סיטי סנטר), קומה 4.</span>
-                <div class="phone-row"><a href="tel:048375649" class="phone-tag"><i class="fa-solid fa-phone"></i> 04-8375649</a></div>
-            </div>
-
-            <div class="item-box">
-                <span class="item-title">מוקדי סיוע נפשי (ער"ן / נט"ל)</span>
-                <div class="phone-row" style="gap: 5px;">
-                    <a href="tel:1201" class="phone-tag" style="font-size: 18px; padding: 10px 15px;">ער"ן: 1201</a>
-                    <a href="tel:*3362" class="phone-tag" style="font-size: 18px; padding: 10px 15px;">נט"ל: *3362</a>
-                </div>
-                <div class="highlight-desc">
-                    קווי ער"ן (לחצו לחיוג ישיר): <br>
-                    <a href="tel:1201" style="text-decoration:none; color:inherit;">ערבית (שלוחה 7)</a> | 
-                    <a href="tel:*3201" style="text-decoration:none; color:inherit;">עולים (*3201)</a> | 
-                    <a href="tel:*2201" style="text-decoration:none; color:inherit;">חיילים (*2201)</a> | 
-                    <a href="tel:0768844429" style="text-decoration:none; color:inherit;">חרדים</a> | 
-                    <a href="tel:1800241201" style="text-decoration:none; color:inherit;">ניצולי שואה</a>
-                </div>
-            </div>
-
-            <div class="item-box">
-                <span class="item-title">ערוצי שירות חוסן - ביטוח לאומי</span>
-                <a href="http://www.btl.gov.il/About/contact_us/Pages/default.aspx" target="_blank" class="btn-link">מעבר לדרכי התקשרות</a>
-            </div>
-
-            <div class="item-box">
-                <span class="item-title">ערכת הקואליציה הישראלית לטראומה</span>
-                <a href="https://link.VIVID.me/1min" target="_blank" class="btn-link">תרגולים לרגעים מאתגרים</a>
-            </div>
-        </section>
-
-        <!-- Category 3: Employment & Rights -->
-        <section class="card">
-            <div class="card-header">
-                <i class="fa-solid fa-briefcase"></i>
-                <h3>תעסוקה וזכויות</h3>
-            </div>
-            
-            <div class="item-box">
-                <span class="item-title">מרכז הזדמנות לתעסוקה חיפה</span>
-                <span class="item-desc">המרכז העירוני לקידום תעסוקה. מעניק ייעוץ אישי, ליווי, סדנאות ותוכניות תעסוקה מגוונות.</span>
-                <a href="https://haifaforms.haifa.muni.il/?page_id=149662" target="_blank" class="btn-link">פנייה ליועץ תעסוקה</a>
-            </div>
-
-            <div class="item-box">
-                <span class="item-title">מוקד זכויות עובדים - משרד העבודה</span>
-                <span class="item-desc">מענה אנושי, מידע חשוב והכוונה לשכירים, עצמאיים ומעסיקים במצבי חירום.</span>
-                <div class="phone-row" style="margin-bottom:10px;">
-                    <a href="tel:*3080" class="phone-tag"><i class="fa-solid fa-phone"></i> *3080</a>
-                </div>
-                <span class="item-desc" style="font-size: 13px; font-weight: 700; color: var(--primary-blue);">המוקד זמין בימים א'-ה', בין השעות 08:30-16:00</span>
-            </div>
-
-            <div class="item-box">
-                <span class="item-title">ערוצי השירות של ביטוח לאומי</span>
-                <span class="item-desc">צ'אט, פנייה מקוונת, מוקד טלפוני.</span>
-                <div class="phone-row" style="margin-bottom:10px;">
-                    <a href="tel:*6050" class="phone-tag"><i class="fa-solid fa-phone"></i> *6050</a>
-                </div>
-                <a href="http://www.btl.gov.il/About/contact_us/Pages/default.aspx" target="_blank" class="btn-link">מעבר לאתר ביטוח לאומי</a>
-            </div>
-
-            <a href="https://www.kolzchut.org.il/he/%D7%A9%D7%90%D7%9C%D7%95%D7%AA_%D7%95%D7%AA%D7%A9%D7%95%D7%91%D7%95%D7%AA_%D7%9C%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D_%D7%95%D7%9C%D7%9E%D7%A2%D7%A1%D7%99%D7%A7%D7%99%D7%9D_%D7%91%D7%AA%D7%A7%D7%95%D7%A4%D7%AA_%D7%94%D7%9E%D7%9C%D7%97%D7%9E%D7%94_%D7%9E%D7%95%D7%9C_%D7%90%D7%99%D7%A8%D7%90%D7%9F" target="_blank" class="mega-link mega-red" style="font-size: 15px; padding: 12px; margin: 10px 0;">
-                <i class="fa-solid fa-circle-question"></i>
-                שאלות ותשובות לעובדים ומעסיקים (כל זכות)
-            </a>
-
-            <div class="item-box">
-                <span class="item-title">מוקד החירום של ההסתדרות</span>
-                <div class="phone-row">
-                    <a href="tel:*2383" class="phone-tag"><i class="fa-solid fa-phone"></i> *2383</a>
-                    <a href="https://wa.me/972548678673" class="phone-tag" style="background: var(--whatsapp-green); color: white;">וואטסאפ</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Category 4: Reserve Duty Support -->
-        <section class="card">
-            <div class="card-header">
-                <i class="fa-solid fa-person-military-pointing"></i>
-                <h3>מילואים</h3>
-            </div>
-            
-            <div class="item-box">
-                <span class="item-title">סיוע בתעסוקה למילואימניקים ונשות המילואים</span>
-                <span class="item-desc">דרך מרכז הזדמנות לתעסוקה חיפה.</span>
-                <a href="https://haifaforms.haifa.muni.il/?page_id=149662" target="_blank" class="btn-link">פנייה לליווי תעסוקתי</a>
-            </div>
-
-            <div class="item-box">
-                <span class="item-title">עמותת פעמונים - סיוע כלכלי</span>
-                <span class="item-desc">סיוע וליווי כלכלי למשפחות משרתי המילואים בחירום.</span>
-                <a href="https://www.facebook.com/share/p/18SvG198eG/" target="_blank" class="btn-link">למידע וסיוע מפעמונים</a>
-            </div>
-
-            <div class="item-box">
-                <span class="item-title">סיוע "העוגן" למשפחות מילואים</span>
-                <span class="item-desc">מעטפת סיוע פיננסי וקהילתי.</span>
-                <a href="https://forms.fillout.com/t/3MNjc8LWPdus" target="_blank" class="btn-link">מילוי טופס סיוע העוגן</a>
-            </div>
-
-            <div class="item-box">
-                <span class="item-title">זכויות משרתי מילואים ובני משפחה</span>
-                <a href="https://www.kolzchut.org.il/he/%D7%99%D7%9C%D7%95%D7%90%D7%99%D7%9D" target="_blank" class="btn-link">פורטל זכויות מילואים (כל זכות)</a>
-            </div>
-
-            <div class="item-box">
-                <span class="item-title">עמותת "גב ללוחם"</span>
-                <a href="https://share.google/Mb33tLc2QEFNLhsze" target="_blank" class="btn-link">סיוע ומעטפת ללוחמים</a>
-            </div>
-        </section>
-
-        <!-- Category 5: Community & Mediation -->
-        <section class="card">
-            <div class="card-header">
-                <i class="fa-solid fa-handshake"></i>
-                <h3>גישור ודיאלוג קהילתי</h3>
-            </div>
-            <div class="item-box">
-                <span class="item-title">מרכז חיפה לגישור ודיאלוג - עיריית חיפה</span>
-                <span class="item-desc">מסייע בפתרון מחלוקות וסכסוכים בין תושבים, שכנים ובתוך הקהילה בדרכי נועם, בהידברות ובהסכמה, במיוחד במצבי לחץ וחירום.</span>
-                <div class="phone-row">
-                    <a href="tel:0548665309" class="phone-tag"><i class="fa-solid fa-phone"></i> 054-8665309</a>
-                    <a href="tel:0773181974" class="phone-tag"><i class="fa-solid fa-phone"></i> 077-3181974</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Category 6: Technical Support -->
-        <section class="card">
-            <div class="card-header">
-                <i class="fa-solid fa-screwdriver-wrench"></i>
-                <h3>סיוע טכני ולוגיסטי</h3>
-            </div>
-            <div class="item-box">
-                <span class="item-title">ארגון "ידידים" - סיוע חינם</span>
-                <div class="highlight-desc">
-                    <b>סיוע בממ"ד:</b> פתיחה ותיקון דלתות/חלונות ממ"ד תקועים.
-                </div>
-                <div class="phone-row"><a href="tel:1230" class="phone-tag"><i class="fa-solid fa-phone"></i> מוקד ידידים: 1230</a></div>
-            </div>
-        </section>
-
-        <!-- Category 7: People with Disabilities -->
-        <section class="card full-width">
-            <div class="card-header">
-                <i class="fa-solid fa-wheelchair"></i>
-                <h3>אנשים עם מוגבלות ובני משפחותיהם</h3>
-            </div>
-            <div class="item-box">
-                <span class="item-title">מענה רגשי ראשוני - מינהל מוגבלויות במשרד הרווחה</span>
-                <span class="item-desc">קו ייעודי למענה רגשי ותמיכה לאנשים עם מוגבלות וקרוביהם.</span>
-                <div class="phone-row"><a href="tel:0533089786" class="phone-tag"><i class="fa-solid fa-phone"></i> 053-3089786</a></div>
-                <span style="font-size: 14px; font-weight:700; margin-top: 5px; display: block;">המוקד פתוח בימים א'-ה' בין השעות 8:00-20:00</span>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Extra Directory Section -->
-    <section class="directory-section">
-        <div class="dir-category">
-            <h4>בריאות</h4>
-            <div class="dir-grid">
-                <!-- Mega Link for Pharmacy -->
-                <div class="dir-item" style="grid-column: 1 / -1;">
-                    <b>בתי מרקחת חירום בחיפה</b>
-                    <a href="https://www2.haifa.muni.il/pharmacy/pharmhaifa.aspx" target="_blank" class="pharmacy-mega-link">
-                        <i class="fa-solid fa-pills"></i> לרשימת בתי מרקחת תורנים (לחצו כאן)
-                    </a>
-                </div>
-                <div class="dir-item">
-                    <b>שח"ל (ניידת טיפול נמרץ)</b>
-                    <a href="tel:035625555" class="phone-link-text">03-5625555</a>
-                </div>
-                <div class="dir-item">
-                    <b>נ.ט.ל.י (רפואה דחופה)</b>
-                    <a href="tel:1800800666" class="phone-link-text">1-800-800666</a>
-                </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-circle-exclamation"></i></div>
+                <h3>עדכוני עירייה</h3>
+                <p>ערוצי העדכון הרשמיים בטלגרם ובווטסאפ לגבי אירועי חירום ומצב לימודים.</p>
+                <a href="https://t.me/haifamuni" target="_blank" class="btn" style="width: 100%; margin-top: auto;">לערוץ הטלגרם</a>
             </div>
         </div>
+    </div>
+</div>
 
-        <div style="text-align: center; margin-top: 30px;">
-            <a href="https://carepedia.org/war-emergency" target="_blank" class="footer-link bg-haifa" style="display: inline-flex; padding: 15px 30px; border-radius: 50px; font-size: 18px;">
-                <i class="fa-solid fa-circle-info" style="margin-left: 10px;"></i>
-                Carepedia - מאגר חירום לאומי מלא
-            </a>
+<!-- Slide 4: תמיכה נפשית וחוסן -->
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">חוסן ותמיכה נפשית</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-heart-circle-check"></i></div>
+                <h3>מרכז חוסן דיגיטלי</h3>
+                <p>מרכז החוסן הדיגיטלי להורים וילדים - כלים ומענים לחיזוק החוסן המשפחתי.</p>
+                <a href="https://haifa-hosen.base44.app/" target="_blank" class="btn" style="width: 100%; margin-top: auto;">כניסה למרחב</a>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-kit-medical"></i></div>
+                <h3>מרכז "עמך" חיפה</h3>
+                <p>תמיכה נפשית למשרתים ובני משפחה. מתמחים בטראומה ואובדן.</p>
+                <p style="font-size: 14px;">בן גוריון 6, קומה 4.</p>
+                <a href="tel:048375649" class="btn" style="width: 100%; margin-top: auto;">חיוג: 04-8375649</a>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-headset"></i></div>
+                <h3>קווי סיוע 24/7</h3>
+                <p>ער"ן (1201) ונט"ל (3362*) זמינים למענה אנונימי ותמיכה בנפגעי חרדה.</p>
+                <a href="tel:1201" class="btn" style="width: 100%; margin-top: auto;">חיוג לער"ן</a>
+            </div>
         </div>
-    </section>
+    </div>
+</div>
 
-    <!-- Fixed Footer with Emergency Hotlines -->
-    <footer class="footer-emergency">
-        <div class="emergency-strip">
-            <a href="tel:100" class="num-box"><label>משטרה</label><b>100</b></a>
-            <a href="tel:101" class="num-box"><label>מד"א</label><b>101</b></a>
-            <a href="tel:102" class="num-box"><label>כיבוי</label><b>102</b></a>
-            <a href="tel:104" class="num-box"><label>פיקוד העורף</label><b>104</b></a>
-            <a href="tel:106" class="num-box"><label>מוקד חיפה</label><b>106</b></a>
-            <a href="tel:103" class="num-box"><label>חשמל</label><b>103</b></a>
+<!-- Slide 5: זכויות ותעסוקה -->
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">זכויות, תעסוקה ומילואים</h2>
+    <div class="content-area">
+        <div class="table-layout">
+            <table>
+                <thead>
+                    <tr>
+                        <th>שירות / ארגון</th>
+                        <th>פירוט המענה</th>
+                        <th>חיוג / קישור</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>מרכז הזדמנות</td>
+                        <td>ייעוץ אישי, ליווי וסדנאות תעסוקה למילואימניקים ולנשותיהם</td>
+                        <td><a href="https://haifaforms.haifa.muni.il/?page_id=149662" target="_blank" style="color: #003366; font-weight: 700;">פנייה ליועץ</a></td>
+                    </tr>
+                    <tr>
+                        <td>משרד העבודה</td>
+                        <td>מוקד זכויות עובדים בחירום (א'-ה' 08:30-16:00)</td>
+                        <td><a href="tel:*3080" style="color: #003366; font-weight: 700;">3080*</a></td>
+                    </tr>
+                    <tr>
+                        <td>ביטוח לאומי</td>
+                        <td>מענקי מלחמה, תגמולים וערוצי שירות מקוונים</td>
+                        <td><a href="tel:*6050" style="color: #003366; font-weight: 700;">6050*</a></td>
+                    </tr>
+                    <tr>
+                        <td>עמותת פעמונים</td>
+                        <td>סיוע וליווי כלכלי למשפחות משרתי המילואים</td>
+                        <td><a href="https://www.facebook.com/share/p/18SvG198eG/" target="_blank" style="color: #003366; font-weight: 700;">למידע</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </footer>
+    </div>
+</div>
+
+<!-- Slide 6: מוקדי חירום מהירים -->
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">מוקדי חירום - חיוג מהיר</h2>
+    <div class="content-area">
+        <div class="tiled-content" style="flex-wrap: wrap;">
+            <div class="tile" style="flex: 0 0 23%; min-width: 200px;">
+                <h3 style="font-size: 40px;"><a href="tel:100" style="text-decoration: none; color: inherit;">100</a></h3>
+                <p>משטרה</p>
+            </div>
+            <div class="tile" style="flex: 0 0 23%; min-width: 200px;">
+                <h3 style="font-size: 40px;"><a href="tel:101" style="text-decoration: none; color: inherit;">101</a></h3>
+                <p>מד"א</p>
+            </div>
+            <div class="tile" style="flex: 0 0 23%; min-width: 200px;">
+                <h3 style="font-size: 40px;"><a href="tel:102" style="text-decoration: none; color: inherit;">102</a></h3>
+                <p>מכבי אש</p>
+            </div>
+            <div class="tile" style="flex: 0 0 23%; min-width: 200px;">
+                <h3 style="font-size: 40px;"><a href="tel:106" style="text-decoration: none; color: inherit;">106</a></h3>
+                <p>מוקד עירוני</p>
+            </div>
+            <div class="tile" style="flex: 0 0 23%; min-width: 200px;">
+                <h3 style="font-size: 40px;"><a href="tel:103" style="text-decoration: none; color: inherit;">103</a></h3>
+                <p>חשמל</p>
+            </div>
+            <div class="tile" style="flex: 0 0 23%; min-width: 200px;">
+                <h3 style="font-size: 40px;"><a href="tel:104" style="text-decoration: none; color: inherit;">104</a></h3>
+                <p>פיקוד העורף</p>
+            </div>
+        </div>
+        <div style="margin-top: 40px; text-align: center; color: #003366; font-weight: 700; font-size: 24px;">
+            המינהל לשירותים חברתיים חיפה: <a href="tel:048356571" style="color: inherit;">04-8356571</a>
+        </div>
+    </div>
 </div>
 
 </body>
